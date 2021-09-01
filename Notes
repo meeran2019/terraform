@@ -11,9 +11,17 @@ terraform destroy               -> It will delete the infrastructure.
 terraform state file            -> It stores the infrastructure details which terraform created.
 terraform fmt                   -> It will format the code.
 terraform refresh               -> It will update the state file wth current infrastructure.
+terraform apply --auto-approve  -> It wont pop up for approval and directy goes to create the infrastructure.
+terraform output                -> It gives the output value. 
+terraform console               -> It opens the console in terminal.
 
+STATE: 
 
+when destroy, captures in tfstate.backup file.
+when apply, store the current state in tfstate file. 
 
+terraform show                  -> It show the content of the statefile without accessing the file.
+terraform state list            -> It shows the list of resource created under the state file. 
 
 
 
