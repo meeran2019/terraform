@@ -10,10 +10,16 @@ terraform apply plan-name       -> Here it wont ask for confirmation, directly a
 terraform destroy               -> It will delete the infrastructure.
 terraform state file            -> It stores the infrastructure details which terraform created.
 terraform fmt                   -> It will format the code.
-terraform refresh               -> It will update the state file wth current infrastructure.
+terraform refresh               -> It will update the state file with current infrastructure.
 terraform apply --auto-approve  -> It wont pop up for approval and directy goes to create the infrastructure.
 terraform output                -> It gives the output value. 
 terraform console               -> It opens the console in terminal.
+terraform validate              -> It used to validate the syntax check. 
+terraform taint resource-name   -> It will mark the resource as tainted. During next apply, it will destroy and recreated.
+terraform untaint resource-name -> It will remove the taint.
+
+terraform import resource-type.resource-name address-id     -> It used to import the resource to tfstate file.
+
 
 STATE: 
 
