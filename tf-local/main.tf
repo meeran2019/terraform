@@ -49,3 +49,4 @@ resource "docker_container" "busybox-container" {
     external = var.external-port[count.index]
   }
 }
+

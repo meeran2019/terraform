@@ -12,9 +12,16 @@ variable "internal-port" {
 }
 
 # sensitive is used to hide the value display. NOTE: Still value will be shown in tfstate file. 
+# validation is used to validate the condition. If condition is true then no error. If condition is false, then throw error. 
+# for max function, max([list of values]...) min([list of values]...)  NOTE: ... (spread operator) is required. 
+
 
 variable "external-port" {
   type = list(any)
+  validation {
+    condition     = max(var.external-port...) < 2000 && min(var.external-port...) > 1000
+    error_message = "Validation is failed with invalid port."
+  }
 }
 
 variable "container_count" {
