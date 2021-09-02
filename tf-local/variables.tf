@@ -14,6 +14,17 @@ variable "internal-port" {
 # sensitive is used to hide the value display. NOTE: Still value will be shown in tfstate file. 
 
 variable "external-port" {
-  type      = number 
-  sensitive = true
+  type = list(any)
+}
+
+variable "container_count" {
+  default = 3
+}
+
+
+# Locals are used to assign a name to expression. Below is the local declaration. 
+# It is referred by using local.local-name. 
+
+locals {
+  local_count = length(var.external-port)
 }
