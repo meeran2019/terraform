@@ -29,5 +29,15 @@ when apply, store the current state in tfstate file.
 terraform show                  -> It show the content of the statefile without accessing the file.
 terraform state list            -> It shows the list of resource created under the state file. 
 
+WORKSPACE:
+
+terraform workspace new workspace-name  -> create a new workspace 
+terraform workspace show                -> it shows the current workspace.
+terraform workspace list                -> It list the workspace.
+terraform workspace select workspace-name -> to switch to other workspace.
+
+terraform.tfstate.d folder will be created. within this, it will create for separate workspaces of tfstate file.
+
+
 
 

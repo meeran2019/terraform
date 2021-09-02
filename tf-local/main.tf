@@ -26,6 +26,7 @@ provider "docker" {
 # It tells which resource to create and consists of resource type and resource name. After execute this resource,
 # it gives ouput(attributes). Please refer the documentation for attribute details or tfstate file. 
 # Lookup is used to retrieve the mapping based on the key value. 
+# lookup(map,key,default)  /  map[key] -> It is another way to represent the lookup without default. 
 
 resource "docker_image" "pull_image" {
   name = lookup(var.image-mapping, var.environment)

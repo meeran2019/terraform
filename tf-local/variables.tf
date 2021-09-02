@@ -58,3 +58,9 @@ variable "image-mapping" {
     prod = "ubuntu"
   }
 }
+
+# terraform.workspace cant refer using variables, so used the locals. 
+
+locals {
+  workspace-value = terraform.workspace
+}

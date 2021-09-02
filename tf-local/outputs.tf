@@ -14,3 +14,11 @@ output "local-count" {
   value       = local.local_count
   description = "Name of the container is"
 }
+
+# This is sample output to understand terraform.workspace concept which returns the current workspace value. 
+# Instead of passing each environement details like dev/prod. Can create the workspace with different environment region. 
+# and pass the terraform.workspace to get the corresponding value. 
+
+output "workspace-output" {
+  value = local.workspace-value
+}
