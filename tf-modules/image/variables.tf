@@ -1,5 +1,5 @@
 
 variable "pass-image-from-main" {
-    type = string
-#    default = "busybox"
+  type = string
+  #    default = "busybox"
 }

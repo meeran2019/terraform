@@ -1,4 +1,8 @@
 
-output "container-name" {
-  value = docker_container.busybox_container.name
+output "main-output-container-name" {
+  value = module.container-source.container-name
+}
+
+output "main-output-image-name" {
+  value = module.image-source.image_output
 }
