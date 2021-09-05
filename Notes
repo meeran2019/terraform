@@ -19,7 +19,7 @@ terraform taint resource-name   -> It will mark the resource as tainted. During 
 terraform untaint resource-name -> It will remove the taint.
 
 terraform import resource-type.resource-name address-id     -> It used to import the resource to tfstate file.
-
+terraform graph | dot -Tpdf > filename.pdf                  -> To visually check the dependanciese. 
 
 STATE: 
 

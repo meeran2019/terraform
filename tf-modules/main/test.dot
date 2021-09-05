@@ -1,0 +1,28 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] docker_container.busybox_container (expand)" [label = "docker_container.busybox_container", shape = "box"]
+		"[root] module.image-source.docker_image.busybox (expand)" [label = "module.image-source.docker_image.busybox", shape = "box"]
+		"[root] module.image-source.provider[\"registry.terraform.io/kreuzwerker/docker\"]" [label = "module.image-source.provider[\"registry.terraform.io/kreuzwerker/docker\"]", shape = "diamond"]
+		"[root] output.container-name" [label = "output.container-name", shape = "note"]
+		"[root] provider[\"registry.terraform.io/kreuzwerker/docker\"]" [label = "provider[\"registry.terraform.io/kreuzwerker/docker\"]", shape = "diamond"]
+		"[root] docker_container.busybox_container (expand)" -> "[root] module.image-source.output.image_output (expand)"
+		"[root] docker_container.busybox_container (expand)" -> "[root] provider[\"registry.terraform.io/kreuzwerker/docker\"]"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] module.image-source (close)"
+		"[root] meta.count-boundary (EachMode fixup)" -> "[root] output.container-name"
+		"[root] module.image-source (close)" -> "[root] module.image-source.output.image_output (expand)"
+		"[root] module.image-source.docker_image.busybox (expand)" -> "[root] module.image-source.provider[\"registry.terraform.io/kreuzwerker/docker\"]"
+		"[root] module.image-source.docker_image.busybox (expand)" -> "[root] module.image-source.var.pass-image-from-main (expand)"
+		"[root] module.image-source.output.image_output (expand)" -> "[root] module.image-source.docker_image.busybox (expand)"
+		"[root] module.image-source.provider[\"registry.terraform.io/kreuzwerker/docker\"] (close)" -> "[root] module.image-source.docker_image.busybox (expand)"
+		"[root] module.image-source.provider[\"registry.terraform.io/kreuzwerker/docker\"]" -> "[root] module.image-source (expand)"
+		"[root] module.image-source.var.pass-image-from-main (expand)" -> "[root] module.image-source (expand)"
+		"[root] output.container-name" -> "[root] docker_container.busybox_container (expand)"
+		"[root] provider[\"registry.terraform.io/kreuzwerker/docker\"] (close)" -> "[root] docker_container.busybox_container (expand)"
+		"[root] root" -> "[root] meta.count-boundary (EachMode fixup)"
+		"[root] root" -> "[root] module.image-source.provider[\"registry.terraform.io/kreuzwerker/docker\"] (close)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/kreuzwerker/docker\"] (close)"
+	}
+}
+
