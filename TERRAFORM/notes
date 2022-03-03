@@ -1,0 +1,51 @@
+---------------------------------------------------------------------------------------------------------
+TERRAFORM:
+---------------------------------------------------------------------------------------------------------
+
+    It is Infrastructure as Code (IaC). 
+    Automation of infrastructure. 
+    Keep infrastructure in certain state. 
+    It makes infrastructure auditable. Store the code in version control system. 
+    It works well with automation tools like ansible tools.
+
+---------------------------------------------------------------------------------------------------------
+INSTALLATION: 
+---------------------------------------------------------------------------------------------------------
+
+    To refer the terraform documentation. 
+
+---------------------------------------------------------------------------------------------------------
+TERRAFORM HCL (HASHICORP CONFIGURATION LANGUAGE):
+---------------------------------------------------------------------------------------------------------
+
+    Variables can be referenced by, 
+        1. using var.variable-name 
+        2. using "${var.variable-name}"
+
+---------------------------------------------------------------------------------------------------------
+AWS AUTHENTICATIONS: 
+---------------------------------------------------------------------------------------------------------
+
+AWS Provides different authentications, 
+
+    Static credentials: 
+            Hard coding values for access_key and secret_key inline in aws provider block. 
+
+    Environment variables: 
+            Provide credentials via the environment variables of AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY. 
+
+    Shared credentials file: 
+            Default AWS credential file is stored in $HOME/.aws/credentials.
+            Custom location can be given by using shared_credentials_file variable. 
+            
+    Role: 
+            Role ARN will be used to assume the role using assume_role. 
+
+---------------------------------------------------------------------------------------------------------
+VARIABLE TYPES: 
+---------------------------------------------------------------------------------------------------------
+
+
+
+
+
