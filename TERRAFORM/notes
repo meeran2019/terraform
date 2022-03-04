@@ -45,6 +45,88 @@ AWS Provides different authentications,
 VARIABLE TYPES: 
 ---------------------------------------------------------------------------------------------------------
 
+    Simple variable types: 
+        String 
+        Number 
+        Boolean 
+
+    Complex variable types: 
+        List(Type): 
+                [1,2,3] /  ["a","b"]
+                It is ordered. 
+
+        set(type): 
+                {1,2,3}
+                It contains unique value. 
+
+        map (type): 
+                { key1: "value1", key2: "value2"}
+                It has key value pair. 
+        Tuple: 
+                It is like list but each element can be different type.
+                [0, "string", boolean]
+    
+    # If type is not mentioned, based on the value, terraform takes the type. 
+
+    variable "variable-name" {
+        default = "sample value"
+    }
+
+    variable "variable-name" {
+        type = string
+        default = "sample value"
+    }
+    
+---------------------------------------------------------------------------------------------------------
+SOFTWARE PROVISIONING: 
+---------------------------------------------------------------------------------------------------------
+
+There are 2 ways to provision software on server machine, 
+    1. Use own cusom AMI with bundled software package in image. Packer is used. 
+    2. Boot standard AMI and then install software on it, 
+            Using file uploads 
+            Using remote exec 
+            Using automation tools like chef, puppet, ansible. 
+    
+    File Uploads: 
+        It is easy way to upload a file or script. 
+        Can be used in conjuction with remote-exec to execute a script. 
+        Provisoner may be SSH or WinRM which uses connection. 
+
+        provisioner "file"{
+            source = "app.conf"
+            destination = "/etc/myapp.conf"
+        }
+        
+        provisioner "file"{
+            source = "app.conf"
+            destination = "/etc/myapp.conf"
+            connection{
+                user=
+                password=
+            }
+        }
+
+        provider "remote-exec"{
+            inline = ["chmod +x /opt/script.sh", "./script.sh"]
+        }
+
+Provisioner - File: 
+        To copy the file from running machine to the newly created machine. 
+
+Provisioner - local-exec: 
+        Invokes a local executable after resource is created in terraform machine. 
+
+Provisioner - remote-exec: 
+        Invoke a resource in remote resource after it is created. 
+        It requires connection and support both ssh and winrm. 
+        It supports the following arguments, 
+            inline - ["command1","command2"]
+            script - Path to local script which copied to remote resource and executed. 
+            scripts - Path to local script which copied to remote resource and executed. They are executed in order they are provided.
+            
+
+
 
 
 
