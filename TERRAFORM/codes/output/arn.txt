@@ -1,0 +1,1 @@
+arn:aws:ec2:us-west-2:929237116919:instance/i-00e41d52b01481f3c

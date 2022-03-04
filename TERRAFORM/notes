@@ -125,6 +125,74 @@ Provisioner - remote-exec:
             script - Path to local script which copied to remote resource and executed. 
             scripts - Path to local script which copied to remote resource and executed. They are executed in order they are provided.
             
+---------------------------------------------------------------------------------------------------------
+OUTPUT: 
+---------------------------------------------------------------------------------------------------------
+    Can use attributes in a script. 
+
+    output "name" {
+        value = resource-type.resource-name.attribute-name
+    }
+
+    provisioner "local-exec" {
+        command = "echo resource-type.resource-name.attribute-name  >> attribute.txt"
+    }
+
+---------------------------------------------------------------------------------------------------------
+REMOTE STATE: 
+---------------------------------------------------------------------------------------------------------
+
+    Terraform store its remote inftrastructure in terraform.tfstate file. 
+    .tfstate file can be stored in version control. 
+    It helps to collaborate in team.
+
+    backend functionality is used to store the tfstate file: 
+        local - default backend 
+        remote - save in remote like terraform cloud. It doesnot support locking. 
+        s3 (locking using dynamodb )
+        consul (locking)
+
+        # Using a single workspace:
+        terraform {
+          backend "remote" {
+            hostname = "app.terraform.io"
+            organization = "company"
+        
+            workspaces {
+              name = "my-app-prod"
+            }
+          }
+        }
+        
+        # Using multiple workspaces:
+        terraform {
+          backend "remote" {
+            hostname = "app.terraform.io"
+            organization = "company"
+
+---------------------------------------------------------------------------------------------------------
+DATA SOURCE: 
+---------------------------------------------------------------------------------------------------------
+
+    It allow terraform to use information defined outside of terraform. 
+    It provides dynamic information. 
+
+    data "aws_ami" "example" {
+        most_recent = true
+      
+        owners = ["self"]
+        tags = {
+          Name   = "app-server"
+          Tested = "true"
+        }
+      }
+
+    data.aws_ami.example.id 
+
+---------------------------------------------------------------------------------------------------------
+DATA SOURCE: 
+---------------------------------------------------------------------------------------------------------
+
 
 
 
