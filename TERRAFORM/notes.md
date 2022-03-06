@@ -260,5 +260,85 @@ terraform taint                 -   during next apply, destroy and create it
 terraform untaint               -   remove taint 
 
 ---------------------------------------------------------------------------------------------------------
+INTERPOLATION: 
+---------------------------------------------------------------------------------------------------------
 
+    Can interpolate other values using ${}
+    
+    Can refer resources, variables, data source.
+
+    VARIABLES: 
+    
+        NAME                    SYNATX                          EXAMPLE
+        String                  var.name                        ${var.name}
+        Map                     var.name["key"]                 ${var.AMI["us-east-1"]} , 
+                                                                ${lookup(var. AMI, var.REGION)}
+        
+        List                    var.list, var.list[index]       ${var.subnet[i]}
+                                                                ${join(",",var.subnets)}
+
+    OUTPUT OF MODULES: 
+        
+        Output of modules       module.module-name.output-name  ${module.ec2-module.instance-id}
+        count information       count.index                     ${count.index}
+        path information        path.TYPE                       path.cwd (current working directory)
+                                                                path.module  (module path)
+                                                                path.root (root module path)
+
+        
+        metainformation         terraform FIELD                                             
+
+---------------------------------------------------------------------------------------------------------
+CONDITIONALS: 
+---------------------------------------------------------------------------------------------------------
+
+    It checks the condition, if true, then returns true value else false value. 
+
+    condition?true-value:false-value 
+
+    count = "${var.env == "prod" ? 2 : 1 }"
+
+    ==, != , < , >, <= , >= , &&, || , Unary ! 
+
+---------------------------------------------------------------------------------------------------------
+BUILT-IN FUNCTIONS: 
+---------------------------------------------------------------------------------------------------------
+
+    ${file("file-name")}        -   read the content of file. 
+    basename(path)              -   basename("/home/tmp/test.txt")  -   returns test.txt 
+    coalesce(string, string)    -   returns 1st non empty value 
+    element(list,index)         -   returns the single element from te given index. 
+    format(format, args)        -   format the string or list. 
+    index(list, element)        -   find the index of given element in a list. 
+    join(delimeter, list)       -   join with the given delimeter. 
+    list(item1, item2)          -   to create the list. 
+    lookup(map, key, default)   -   lookup for the key on a map.
+    lower(string)               -   convert to lower case.
+    map(key, value)             -   returns new map using key & value.
+    merge(map1, map2)           -   merger maps (union)
+    replace(string, search, replace)    -   search and replace in string.
+    split(delimeter, string)    -   split a string into list. 
+    substr(string, offset, length)      -   extract substring from string.
+    timestamp()                 -   return timestamp
+    upper(string)               -   convert to upper case.
+    uuid()                      -   
+    values(map)                 -   returns the value of map.
+
+---------------------------------------------------------------------------------------------------------
+FOR AND FOR-EACH LOOPS: 
+---------------------------------------------------------------------------------------------------------
+
+    For loop features, helps to loop over the variables in list/map , transform it, and output it in different formats of list/map. 
+
+        [ for x in list : upper(x) ]
+
+
+    For_Each loop is not used when assigning a value to argument but rather to repeat the blocks. 
+    for_each does not work on list(string) but work on set(string) & map(string). 
+
+        ingress {}        
+
+---------------------------------------------------------------------------------------------------------
+FOR AND FOR-EACH LOOPS: 
+---------------------------------------------------------------------------------------------------------
 
