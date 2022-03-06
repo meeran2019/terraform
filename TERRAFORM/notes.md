@@ -240,9 +240,25 @@ MODULES:
     use a module from local folder. 
 
     can pass arguments to the model. 
-    
+
+---------------------------------------------------------------------------------------------------------
+TERRAFORM COMMANDS: 
 ---------------------------------------------------------------------------------------------------------
 
+terraform apply 
+terraform destroy 
+terraform validate 
+terraform fmt 
+terraform graph 
+terraform import address-id     -   import to tfstate file not .tf file.
+terraform output 
+terraform plan 
+terraform refresh               -   refresh remote state
+terraform show                  -   show state file in readable
+terraform state                 -   for state management
+terraform taint                 -   during next apply, destroy and create it 
+terraform untaint               -   remove taint 
 
+---------------------------------------------------------------------------------------------------------
 
 
