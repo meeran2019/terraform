@@ -336,9 +336,66 @@ FOR AND FOR-EACH LOOPS:
     For_Each loop is not used when assigning a value to argument but rather to repeat the blocks. 
     for_each does not work on list(string) but work on set(string) & map(string). 
 
+    for_each = var.variable-name 
+    instance-type = each.value (If map is used, then each.key)
+
         ingress {}        
 
 ---------------------------------------------------------------------------------------------------------
-FOR AND FOR-EACH LOOPS: 
+TERRAFORM PROJECT STRUCTURE: 
 ---------------------------------------------------------------------------------------------------------
 
+    Use modules. 
+    main.tf 
+    providers.tf 
+    data-sources.tf 
+    backend.tf 
+    outputs.tf 
+    variables.tf 
+    terraform.tfvars 
+
+---------------------------------------------------------------------------------------------------------
+TERRAFORM WORKSPACE: 
+---------------------------------------------------------------------------------------------------------
+
+    Workspace in terraform is independently managed state files. 
+    can manage multiple environments with workspaces. 
+
+    /.terraform.tfstate.d/workspace-name
+
+        terraform workspace new     -   create new workspace 
+        terraform workspace list    -   shows list of workspace 
+        terraform workspace show    -   show the name of current workspace
+        terraform workspace select  -   select the workspace 
+        terraform workspace delete  -   delete the workspace 
+
+    ${terraform.workspace}      -   can use interpolation to get the current workspace.
+
+
+---------------------------------------------------------------------------------------------------------
+TERRAFORM LOCK FILE: 
+---------------------------------------------------------------------------------------------------------
+
+    .terraform.lock.hcl is created during terraform init. 
+    it captures the versions of providers and modules. 
+    It should be committed to git. 
+    rerun of terraform, will use the same version. 
+    will update lock file, if provider version is updated. 
+
+---------------------------------------------------------------------------------------------------------
+MANIPULATING STATE: 
+---------------------------------------------------------------------------------------------------------
+
+    It uses when upgrading between versions. 
+    When rename a resources without creating it. 
+    Change the position of a resource.
+
+        terraform state list    -   list resources in state 
+        terraform state mv      -   move an item in the state or rename. 
+        terraform state rm      -   remove an instance from state 
+        terraform state show    -   show a resource in the state
+        terraform state pull    -   pull current state and output to stdout
+        terraform state push    -   overwrite state file by pushing local file to state file. 
+        terraform state replace-provider -  to change provider in state file. 
+        
+---------------------------------------------------------------------------------------------------------
