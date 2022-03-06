@@ -190,11 +190,58 @@ DATA SOURCE:
     data.aws_ami.example.id 
 
 ---------------------------------------------------------------------------------------------------------
-DATA SOURCE: 
+TEMPLATES: 
 ---------------------------------------------------------------------------------------------------------
 
+    It helps to creating customized configuration file. 
+    Can build templates based on the file. 
+    Can be used to generate generic template or cloud init config. 
+    If want to pass user data based on other configuration, can use template. 
 
+    data "template_file" "init" {
+    template = "${file("${path.module}/init.tpl")}"
+    vars = {
+        consul_address = "${aws_instance.consul.private_ip}"
+    }
+    }
 
+    init.tpl 
+    #!/bin/bash
+    echo "CONSUL_ADDRESS = ${consul_address}" > /tmp/iplist
+
+---------------------------------------------------------------------------------------------------------
+TEMPLATES IN TERRAFORM 0.12: 
+---------------------------------------------------------------------------------------------------------
+    templatefile reads the file at given path and render its content as content using supplied set of tempalte variables. 
+
+    templatefile(path, variables in map)
+
+---------------------------------------------------------------------------------------------------------
+OTHER PROVIDERS: 
+---------------------------------------------------------------------------------------------------------
+
+    Terraform has many providers to choose from, 
+        AWS 
+        API 
+        Azure 
+        Google 
+        VMware 
+        Datadog 
+        Github 
+
+---------------------------------------------------------------------------------------------------------
+MODULES: 
+---------------------------------------------------------------------------------------------------------
+
+    Use modules to make terraform more organized. 
+    reuse the code. 
+    use third party modules.
+    use a module from github. 
+    use a module from local folder. 
+
+    can pass arguments to the model. 
+    
+---------------------------------------------------------------------------------------------------------
 
 
 
