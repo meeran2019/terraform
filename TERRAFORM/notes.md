@@ -77,6 +77,15 @@ VARIABLE TYPES:
         default = "sample value"
     }
     
+    variable "variable-name" {
+        type = string 
+
+        validation {
+            condition = (var.ami_id == "ami-12345")
+            error_message = "If condition failed, execute this message"
+        }
+    }
+
 ---------------------------------------------------------------------------------------------------------
 SOFTWARE PROVISIONING: 
 ---------------------------------------------------------------------------------------------------------
@@ -125,6 +134,12 @@ Provisioner - remote-exec:
             script - Path to local script which copied to remote resource and executed. 
             scripts - Path to local script which copied to remote resource and executed. They are executed in order they are provided.
             
+on_failure = fail / continue    -   on failure, whether to fail or continue. 
+when = create / destroy         -   to execute during creation or destroy.
+
+self object is used to refer the parent resource attributes. 
+    self.public_ip 
+
 ---------------------------------------------------------------------------------------------------------
 OUTPUT: 
 ---------------------------------------------------------------------------------------------------------
@@ -323,6 +338,8 @@ BUILT-IN FUNCTIONS:
     upper(string)               -   convert to upper case.
     uuid()                      -   
     values(map)                 -   returns the value of map.
+    contains (list, value)      -   checks whether value is present in list and returns true/false.
+    jsonencode({"hello"="world"})  -> {"hello" : "world"}
 
 ---------------------------------------------------------------------------------------------------------
 FOR AND FOR-EACH LOOPS: 

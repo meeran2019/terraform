@@ -45,7 +45,7 @@ resource "docker_container" "busybox-container" {
   }
   command = [
     "sleep",
-    "3600"
+    "3700"
   ]
   ports {
     internal = var.internal-port
