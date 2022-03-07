@@ -25,7 +25,7 @@ resource "docker_image" "pull_image" {
 resource "docker_container" "busybox-container" {
   name  = join("-", ["busybox-container", count.index])
   image = docker_image.pull_image.latest
-  count = 3
+  count = 2
   command = [
     "sleep",
     "3600"
