@@ -97,6 +97,9 @@ There are 2 ways to provision software on server machine,
             Using remote exec 
             Using automation tools like chef, puppet, ansible. 
     
+    NOTE:   Provisioner is created under resources. To refer the resource, use the self.attribute.
+            Mostly used in conjugation with NULL resources. 
+            
     File Uploads: 
         It is easy way to upload a file or script. 
         Can be used in conjuction with remote-exec to execute a script. 

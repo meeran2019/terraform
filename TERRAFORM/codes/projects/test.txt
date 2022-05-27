@@ -1,0 +1,37 @@
+    "volumes": [
+        {
+            "host": {
+                "sourcePath": "/opt/gbs_cloud_lz/c2c/dia"
+            },
+            "name": "efs1"
+        }
+        {
+            "host": {
+                "sourcePath": "/opt/claims/c2c/dia"
+            },
+            "name": "efs2"
+        }
+        {
+            "host": {
+                "sourcePath": "/opt/claims/c2c/cdp"
+            },
+            "name": "efs1"
+        }                
+    ],
+    "mountPoints": [
+        {
+            "containerPath": "/data",
+            "sourceVolume": "efs1",
+            "readOnly": false
+        }
+        {
+            "containerPath": "/data",
+            "sourceVolume": "efs2",
+            "readOnly": false
+        }
+        {
+            "containerPath": "/data",
+            "sourceVolume": "efs3",
+            "readOnly": false
+        }                
+    ]
