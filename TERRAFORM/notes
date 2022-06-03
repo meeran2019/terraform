@@ -419,3 +419,7 @@ MANIPULATING STATE:
         terraform state replace-provider -  to change provider in state file. 
         
 ---------------------------------------------------------------------------------------------------------
+VARIABLE PRECEDENCE: 
+---------------------------------------------------------------------------------------------------------
+From Higher Precedence to Lower: 
+        -var and -var-file in CLI   > *.auto.tfvars or *.auto.tfvars.json  > terraform.tfvars.json  > terraform.tfvars 
