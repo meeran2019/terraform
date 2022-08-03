@@ -19,5 +19,5 @@ variable "instance-type" {
 
 output "instance-ids" {
   value = {for key, value in aws_instance.web: key => value.id}
-  
+#value       = { for p in sort(keys(var.project)) : p => module.ec2_instances[p].instance_ids }  
 }
