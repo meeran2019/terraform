@@ -42,8 +42,8 @@ variable "instance-type" {
   default = ["t2.micro", "t2.nano"]
 }
 
-# output "instance-ids" {
-# #  value = {for key, value in aws_instance.web: key => value.id}
-# value       = { for key, value in module.ec2-module : key => module.ec2-module}
-# #value = values(mso_schema_template_bd.bd).*.name  
-# }
+output "instance-ids" {
+#  value = {for key, value in aws_instance.web: key => value.id}
+value       = values(module.ec2-module.output-of-module)
+#value = values(mso_schema_template_bd.bd).*.name  
+}

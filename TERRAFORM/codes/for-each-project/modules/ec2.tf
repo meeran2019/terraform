@@ -18,6 +18,6 @@ variable "instance-type" {
 }
 
 output "output-of-module" {
-    value = values(aws_instance.web)
+    value = values(aws_instance.web).*.id 
   
 }
