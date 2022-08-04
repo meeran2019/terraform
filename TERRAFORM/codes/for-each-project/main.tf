@@ -44,6 +44,6 @@ variable "instance-type" {
 
 output "instance-ids" {
 #  value = {for key, value in aws_instance.web: key => value.id}
-value       = values(module.ec2-module.output-of-module)
+value       = values(module.ec2-module)
 #value = values(mso_schema_template_bd.bd).*.name  
 }
