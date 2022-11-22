@@ -341,6 +341,43 @@ BUILT-IN FUNCTIONS:
     jsonencode({"hello"="world"})  -> {"hello" : "world"}
 
 ---------------------------------------------------------------------------------------------------------
+COUNT vs For Each vs For:
+---------------------------------------------------------------------------------------------------------
+
+Count - Used to create multiple instances of same resources. 
+
+    variable "my_list" {
+      default = ["first", "second", "third"]
+    }
+    resource "null_resource" "default" {
+      count = length(var.my_list)
+      triggers = {
+        list_index = count.index
+        list_value = var.my_list[count.index]
+      }
+    }
+    
+   Disadvantages - If any change in position of list - it will force replacement of all resources of which index has changed.
+   
+For each -  Same as count but it takes Map/Set as input. 
+            toset() -> used to convert to set. 
+            
+            variable "my_list" {
+          default = ["zero", "first", "second", "third"]
+        }
+        resource "null_resource" "default" {
+          for_each = toset(var.my_list)
+          triggers = {
+            list_index = each.key
+            list_value = each.value
+          }
+
+For: - Iterate over the list or map.
+    
+    for item in LIST : lower(KEY) => VALUE
+    for key,value in MAP : KEY => upper(VALUE)
+    
+---------------------------------------------------------------------------------------------------------
 FOR AND FOR-EACH LOOPS: 
 ---------------------------------------------------------------------------------------------------------
 
