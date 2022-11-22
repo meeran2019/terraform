@@ -108,11 +108,6 @@ There are 2 ways to provision software on server machine,
         provisioner "file"{
             source = "app.conf"
             destination = "/etc/myapp.conf"
-        }
-        
-        provisioner "file"{
-            source = "app.conf"
-            destination = "/etc/myapp.conf"
             connection{
                 user=
                 password=
@@ -127,7 +122,8 @@ Provisioner - File:
         To copy the file from running machine to the newly created machine. 
 
 Provisioner - local-exec: 
-        Invokes a local executable after resource is created in terraform machine. 
+        Invokes a local executable after resource is created in terraform machine.
+        For ex: In lambda to download artifacts. 
 
 Provisioner - remote-exec: 
         Invoke a resource in remote resource after it is created. 
@@ -166,7 +162,7 @@ REMOTE STATE:
 
     backend functionality is used to store the tfstate file: 
         local - default backend 
-        remote - save in remote like terraform cloud. It doesnot support locking. 
+        remote - save in remote like terraform cloud. It handles locking. 
         s3 (locking using dynamodb )
         consul (locking)
 
