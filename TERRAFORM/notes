@@ -456,3 +456,30 @@ VARIABLE PRECEDENCE:
 ---------------------------------------------------------------------------------------------------------
 From Higher Precedence to Lower: 
         -var and -var-file in CLI   > *.auto.tfvars or *.auto.tfvars.json  > terraform.tfvars.json  > terraform.tfvars 
+
+---------------------------------------------------------------------------------------------------------
+DYNAMIC BLOCKS: 
+---------------------------------------------------------------------------------------------------------
+It helps to create a repeatable nested blocks within resources. 
+It supports list, map, set. 
+
+locals {
+         inbound_ports = [80, 443]
+         …
+        }
+        …
+         dynamic “ingress” {
+          for_each = local.inbound_ports
+          iterator = iterator-name   (If iterator is used, then refer the value using iterator-name.value else dynamic-name.value)
+                content {
+           from_port   = ingress.value
+           to_port     = ingress.value
+           protocol    = “tcp”
+           cidr_blocks = [ “0.0.0.0/0” ]
+          }
+          
+         }
+         
+        }
+
+
