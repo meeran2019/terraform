@@ -476,10 +476,22 @@ locals {
            to_port     = ingress.value
            protocol    = “tcp”
            cidr_blocks = [ “0.0.0.0/0” ]
+          }          
+         }         
+        }
+
+---------------------------------------------------------------------------------------------------------
+LIFECYCLE: 
+---------------------------------------------------------------------------------------------------------
+It is meta argument placed within a resource block.
+Available arguments are create_before_destroy, prevent_destroy, ignore_changes, replace_triggered_by, precondition, postcondition (like validation). 
+
+        resource "azurerm_resource_group" "example" {
+          # ...
+
+          lifecycle {
+            create_before_destroy = true
           }
-          
-         }
-         
         }
 
 
