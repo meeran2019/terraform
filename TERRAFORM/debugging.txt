@@ -10,5 +10,7 @@ time_sleep() -> used to delay the creation or destroy of resources.
       create_duration = "30s"
       destroy_duration = "30s"
 
+Cloudformation have cfn-init and cfn-signals feature which can be kept as it is in CLoudformation and use the "aws_cloudformation_stack".
+
 
 
