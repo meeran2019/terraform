@@ -6,5 +6,9 @@ If any variable type issue, can include type (ex:string,number etc)
 
 Use validation block to check the condition and throw error message.
 
+time_sleep() -> used to delay the creation or destroy of resources. 
+      create_duration = "30s"
+      destroy_duration = "30s"
+
 
 
