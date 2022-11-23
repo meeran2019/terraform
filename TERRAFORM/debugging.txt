@@ -1,1 +1,10 @@
 
+Can use Environment variable TF_LOG=TRACE/DEBUG/ERROR/INFO/WARN. TF_LOG_PATH=file-name
+      NOTE: First TF_LOG should eb enabled to capture in TF_LOG_PATH
+
+If any variable type issue, can include type (ex:string,number etc)
+
+Use validation block to check the condition and throw error message.
+
+
+
