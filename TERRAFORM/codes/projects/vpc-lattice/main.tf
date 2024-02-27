@@ -34,7 +34,6 @@ resource "aws_vpclattice_service_network_vpc_association" "example" {
 }
 
 ## To create the target group.
-
 resource "aws_vpclattice_target_group" "example" {
   name = "example"
   type = "INSTANCE"
